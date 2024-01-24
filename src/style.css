@@ -1,96 +1,81 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+/* src/style.css */
 
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 360px;
+
+
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+select {
+  margin: 10px;
+  padding: 5px;
+}
+
+#choix_equipes {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#trace_geo,
+#trace_1d {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#legende_div {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+
+}
+
+
+
+
+label {
+  margin-right: 10px;
+}
+
+/* Ajoutez des styles spécifiques si nécessaire pour vos éléments spécifiques */
+
+.device_aggreg {
+  border: 2px solid #ccc;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  /* ou display: inline-flex; */
+
+  /* Couleur du texte en blanc, ajustez selon vos préférences */
+}
+
+
+#checkbox {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-end;
+  /* Aligner les éléments à droite */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+label {
+  margin-bottom: 5px;
+  /* Marge entre les labels pour un espacement visuel */
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+input[type="checkbox"] {
+  margin-left: 5px;
+  /* Marge à gauche pour un espacement visuel des cases à cocher */
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }

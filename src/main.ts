@@ -1,65 +1,46 @@
-import * as d3 from "d3";
-// import data3607 from "../data/interpolated/interpolation_3607.csv";
 import data3607 from "../data/interpolated/interpolation_3607.csv";
-import { controlPoints } from "./controlPoints";
+import data3609 from "../data/interpolated/interpolation_3609.csv";
+import data3610 from "../data/interpolated/interpolation_3610.csv";
+import data3611 from "../data/interpolated/interpolation_3611.csv";
+import data3612 from "../data/interpolated/interpolation_3612.csv";
+import data3613 from "../data/interpolated/interpolation_3613.csv";
+import data3615 from "../data/interpolated/interpolation_3615.csv";
 
-// Declare the chart dimensions and margins.
-const width = 640;
-const height = 400;
-const marginTop = 20;
-const marginRight = 20;
-const marginBottom = 30;
-const marginLeft = 40;
+import {
+  tracer_ligne,
+  tracer_vitesse,
+  tracer_parcours,
+  carte_leaflet,
+} from "./fonctions";
+import { aggregation } from "./aggregation";
 
-async function start() {
-  console.log("data", data3607);
-  let minX = Infinity;
-  let maxX = -Infinity;
-  let minY = Infinity;
-  let maxY = -Infinity;
-  for (let record of data3607) {
-    if (record.x < minX) minX = record.x;
-    if (record.x > maxX) maxX = record.x;
-    if (record.y < minY) minY = record.y;
-    if (record.y > maxY) maxY = record.y;
-  }
-  console.log("minx", minX, "maxX", maxX, "minY", minY, "maxY", maxY);
-  const xScale = d3
-    .scaleLinear()
-    .domain([minX - 100, maxX + 100])
-    .range([marginLeft, width - marginRight]);
+let select_device_aggregation = document.getElementById(
+  "select_device_aggregation"
+);
 
-  const yScale = d3
-    .scaleLinear()
-    .domain([minY - 100, maxY + 100])
-    .range([height - marginBottom, marginTop]);
+let choix_device = document.getElementById("choix_device");
 
-  const svg = d3.create("svg").attr("width", width).attr("height", height);
+var device;
 
-  //add points
-  svg
-    .selectAll("circle")
-    .data(data3607)
-    .enter()
-    .append("circle")
-    .attr("cx", (d) => xScale(d.x))
-    .attr("cy", (d) => yScale(d.y))
-    .attr("r", 1)
-    .attr("fill", "black");
+export let dico_devices = {
+  cle3607: data3607,
+  cle3609: data3609,
+  cle3610: data3610,
+  cle3611: data3611,
+  cle3612: data3612,
+  cle3613: data3613,
+  cle3615: data3615,
+};
 
-  // add control points
-  svg
-    .selectAll("circle.control")
-    .data(controlPoints)
-    .enter()
-    .append("circle")
-    .attr("class", "control")
-    .attr("cx", (d) => xScale(d[0]))
-    .attr("cy", (d) => yScale(d[1]))
-    .attr("r", 3)
-    .attr("fill", "red");
+carte_leaflet(data3607);
+tracer_ligne(data3607);
+tracer_parcours(data3607);
 
-  document.getElementById("app")?.append(svg.node());
-}
+choix_device.addEventListener("change", function () {
+  var cle = "cle" + choix_device.value;
+  device = dico_devices[cle];
 
-start();
+  tracer_vitesse(device);
+});
+
+select_device_aggregation.addEventListener("change", aggregation);

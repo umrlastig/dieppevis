@@ -1,13 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/style.css" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.js"></script>
   </head>
+
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <select id="choix_device">
+      <option value="" selected disabled>Sélectionnez une équipe</option>
+      <option value="3607">3607</option>
+      <option value="3609">3609</option>
+      <option value="3610">3610</option>
+      <option value="3612">3611</option>
+      <option value="3612">3612</option>
+      <option value="3613">3613</option>
+      <option value="3615">3615</option>
+    </select>
+
+    <select id="select_device_aggregation">
+      <option value="" selected disabled>Sélectionnez plusieurs équipes</option>
+      <option value="3607">3607</option>
+      <option value="3609">3609</option>
+      <option value="3610">3610</option>
+      <option value="3612">3611</option>
+      <option value="3612">3612</option>
+      <option value="3613">3613</option>
+      <option value="3615">3615</option>
+    </select>
+    <div id="choix_equipes">
+      <button id="bouton_aggreg">Calculer les résultats agrégés</button>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="trace_1d">
+      <div id="checkbox">
+        <label>Altitude<input type="checkbox" id="alti_checkbox" /></label>
+        <label
+          >Graphe Alti<input type="checkbox" id="graphe_alti_checkbox"
+        /></label>
+        <label
+          >Occupation du sol <input type="checkbox" id="sol_checkbox"
+        /></label>
+        <label id="label_vitesse_checkbox"
+          >Vitesse<input type="checkbox" id="vitesse_checkbox"
+        /></label>
+        <label id="label_troncon_checkbox"
+          >Vitesse par tronçon<input type="checkbox" id="troncon_checkbox"
+        /></label>
+        <label id="label_graphe_vitesse"
+          >Graphe de la vitesse<input type="checkbox" id="graphe_vitesse"
+        /></label>
+        <label id="label_checkbox_med"
+          >Médiane et Quartiles<input type="checkbox" id="graphe_med"
+        /></label>
+        <label id="label_vitesses_cumulees"
+          >Vitesses cumulées<input type="checkbox" id="vitesses_cumulees"
+        /></label>
+        <label id="label_plusieurs_vitesses"
+          >Visionner les vitesses<input type="checkbox" id="plusieurs_vitesses"
+        /></label>
+      </div>
+    </div>
+    <div id="legende_div"></div>
   </body>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/aggregation.ts"></script>
 </html>
